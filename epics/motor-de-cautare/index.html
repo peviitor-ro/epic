@@ -62,6 +62,41 @@
     }
 
     .footer a:hover { color: #2f7973; }
+
+    .footnotes {
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px solid #e8dccc;
+      font-size: 0.75rem;
+      color: #8b7d6b;
+      line-height: 1.6;
+    }
+
+    .footnotes h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #5a4a3a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .footnotes table {
+      font-size: 0.75rem;
+      margin: 8px 0;
+    }
+
+    .footnotes table td {
+      padding: 5px 10px;
+      border-color: #e8dccc;
+    }
+
+    .footnotes a {
+      color: #5a4a3a;
+      text-decoration: none;
+    }
+
+    .footnotes a:hover { color: #2f7973; }
     blockquote { margin: 20px 0; padding: 20px 25px; background: #f5f0e8; border-left: 4px solid #2f7973; font-style: italic; color: #3d3d3d; }
     blockquote strong { color: #2f7973; }
     .pill { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 2px 12px; border-radius: 20px; margin: 2px 3px; }
@@ -253,38 +288,47 @@
         </p>
       </div>
 
-      <div class="section">
-        <h2>Legături cu celelalte epice</h2>
-        <ul>
-          <li>
-            <strong>EPIC-001</strong> (<a href="../date-despre-companii/">Date despre companii</a>)
-            — sursa datelor despre angajatori
-          </li>
-          <li>
-            <strong>EPIC-002</strong> (<a href="../locuri-de-munca/">Locuri de muncă</a>)
-            — modelul datelor indexate
-          </li>
-          <li>
-            <strong>EPIC-003</strong> (<a href="../protectia-datelor/">Protecția datelor</a>)
-            — integritatea și securitatea informației
-          </li>
-          <li>
-            <strong>EPIC-004</strong> (<a href="../scrapere-automatizare/">Scrapere &amp; Automatizare</a>)
-            — alimentarea motorului cu date proaspete
-          </li>
-          <li>
-            <strong>EPIC-005</strong> (<a href="../validare-testare/">Validare &amp; Testare</a>)
-            — calitatea datelor indexate
-          </li>
-          <li>
-            <strong>EPIC-006</strong> (<a href="../infrastructura-solr/">Infrastructură SOLR</a>)
-            — motorul de indexare și căutare full-text
-          </li>
-          <li>
-            <strong>EPIC-007</strong> (<a href="../api-public/">API Public</a>)
-            — interfața programatică pentru terți
-          </li>
-        </ul>
+      <div class="footnotes">
+        <h3>Legături cu celelalte epice</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td><a href="../date-despre-companii/">EPIC-001</a></td>
+              <td>Date despre companii</td>
+              <td>Sursa datelor despre angajatori</td>
+            </tr>
+            <tr>
+              <td><a href="../locuri-de-munca/">EPIC-002</a></td>
+              <td>Locuri de muncă</td>
+              <td>Modelul datelor indexate</td>
+            </tr>
+            <tr>
+              <td><a href="../protectia-datelor/">EPIC-003</a></td>
+              <td>Protecția datelor</td>
+              <td>Integritatea și securitatea informației</td>
+            </tr>
+            <tr>
+              <td><a href="../scrapere-automatizare/">EPIC-004</a></td>
+              <td>Scrapere & Automatizare</td>
+              <td>Alimentarea motorului cu date proaspete</td>
+            </tr>
+            <tr>
+              <td><a href="../validare-testare/">EPIC-005</a></td>
+              <td>Validare & Testare</td>
+              <td>Calitatea datelor indexate</td>
+            </tr>
+            <tr>
+              <td><a href="../infrastructura-solr/">EPIC-006</a></td>
+              <td>Infrastructură SOLR</td>
+              <td>Motorul de indexare și căutare full-text</td>
+            </tr>
+            <tr>
+              <td><a href="../api-public/">EPIC-007</a></td>
+              <td>API Public</td>
+              <td>Interfața programatică pentru terți</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
