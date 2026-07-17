@@ -470,11 +470,11 @@
             </tr>
             <tr>
               <td><code>location</code></td>
-              <td>București, Cluj-Napoca</td>
+              <td><code>["București", "Cluj-Napoca"]</code></td>
             </tr>
             <tr>
               <td><code>tags</code></td>
-              <td><code>javascript, react, node.js, 3-5 ani experienta</code></td>
+              <td><code>["javascript", "react", "node.js", "3-5 ani experienta"]</code></td>
             </tr>
             <tr>
               <td><code>workmode</code></td>
@@ -512,12 +512,14 @@
         <p>
           Fiecare companie parteneră are un scraper dedicat care extrage
           anunțurile de pe site-ul oficial de cariere. Scraper-ele sunt
-          scrise de voluntari și rulează periodic prin GitHub Actions.
+          scrise de voluntari sub formă de repo-uri GitHub și rulează
+          periodic prin GitHub Actions.
         </p>
         <ul>
-          <li><strong>Format:</strong> fișier <code>.md</code> cu configurația scraperului</li>
+          <li><strong>Structură:</strong> repo GitHub separat per companie (ex: <code>holcim-romania-sa-nodejs-scraper</code>)</li>
           <li><strong>Date colectate:</strong> url, title, company, location, tags, workmode, salary</li>
           <li><strong>Frecvență:</strong> configurabilă per scraper (zilnic/săptămânal)</li>
+          <li><strong>Format output:</strong> fișier JSON compatibil cu modelul de date SOLR</li>
         </ul>
 
         <h3>2. Validare automată</h3>
@@ -564,19 +566,47 @@
       </div>
 
       <div class="section">
-        <h2>Feature-uri derivate</h2>
-        <p>Feature-urile derivate din acest epic, ce vor fi detaliate separat:</p>
-        <ul>
-          <li><strong>Job Validation</strong> — reguli de validare pentru fiecare câmp al modelului</li>
-          <li><strong>Job Search</strong> — motor de căutare full-text pe anunțuri</li>
-          <li><strong>Job Expiration</strong> — gestionarea expirării automate a anunțurilor</li>
-          <li><strong>Duplicate Detection</strong> — detectarea anunțurilor duplicate</li>
-          <li><strong>Bulk Import</strong> — import în masă pentru companii cu multe poziții</li>
-          <li><strong>Company Matching</strong> — asocierea automată a anunțului cu compania corectă</li>
-        </ul>
+        <h2>Funcționalități asociate</h2>
+        <p>Funcționalitățile derivate din acest epic sunt detaliate mai jos, în subsolul paginii.</p>
       </div>
 
       <div class="footnotes">
+        <h3>Funcționalități asociate</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td><a href="../../features/job-validation/">FEAT-008</a></td>
+              <td>Validare job</td>
+              <td>Reguli de validare pentru fiecare câmp al modelului</td>
+            </tr>
+            <tr>
+              <td><a href="../../features/job-search/">FEAT-009</a></td>
+              <td>Căutare job</td>
+              <td>Motor de căutare full-text pe anunțuri</td>
+            </tr>
+            <tr>
+              <td><a href="../../features/job-expiration/">FEAT-010</a></td>
+              <td>Expirare job</td>
+              <td>Gestionarea expirării automate a anunțurilor</td>
+            </tr>
+            <tr>
+              <td><a href="../../features/duplicate-detection/">FEAT-011</a></td>
+              <td>Detectare duplicate</td>
+              <td>Detectarea anunțurilor duplicate</td>
+            </tr>
+            <tr>
+              <td><a href="../../features/bulk-import/">FEAT-012</a></td>
+              <td>Import în masă</td>
+              <td>Import pentru companii cu multe poziții</td>
+            </tr>
+            <tr>
+              <td><a href="../../features/company-matching/">FEAT-013</a></td>
+              <td>Asociere companie</td>
+              <td>Asocierea automată a anunțului cu compania corectă</td>
+            </tr>
+          </tbody>
+        </table>
+
         <h3>Legături cu celelalte epice</h3>
         <table>
           <tbody>
@@ -618,16 +648,7 @@
           </tbody>
         </table>
 
-        <h3>Funcționalități asociate</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td><a href="../../features/structura-companii/">FEAT-001</a></td>
-              <td>Structura companiei</td>
-              <td>Modelul de date al companiei, identitate legală și comercială</td>
-            </tr>
-          </tbody>
-        </table>
+
       </div>
 
     </div>
