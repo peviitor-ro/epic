@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Epic: DATE DESPRE COMPANII – Requirements</title>
+  <title>Feature: SURSE GRATUITE DE VERIFICARE – Requirements</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Great+Vibes&family=Gelasio:wght@700&family=Roboto:wght@600;700&display=swap" rel="stylesheet">
@@ -52,8 +52,8 @@
       display: inline-block;
       font-size: 0.7rem;
       font-weight: 700;
-      border: 2px solid #c0392b;
-      color: #c0392b;
+      border: 2px solid #2f7973;
+      color: #2f7973;
       padding: 2px 16px;
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -206,6 +206,19 @@
       margin-bottom: 6px;
     }
 
+    blockquote {
+      margin: 20px 0;
+      padding: 20px 25px;
+      background: #f5f0e8;
+      border-left: 4px solid #2f7973;
+      font-style: italic;
+      color: #3d3d3d;
+    }
+
+    blockquote strong {
+      color: #2f7973;
+    }
+
     .sig-row {
       display: flex;
       justify-content: space-between;
@@ -289,6 +302,11 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 8px;
+      margin-top: 18px;
+    }
+
+    .footnotes h3:first-child {
+      margin-top: 0;
     }
 
     .footnotes table {
@@ -296,9 +314,14 @@
       margin: 8px 0;
     }
 
+    .footnotes table th,
     .footnotes table td {
       padding: 5px 10px;
       border-color: #e8dccc;
+    }
+
+    .footnotes table th {
+      font-size: 0.7rem;
     }
 
     .footnotes a {
@@ -306,7 +329,9 @@
       text-decoration: none;
     }
 
-    .footnotes a:hover { color: #2f7973; }
+    .footnotes a:hover {
+      color: #2f7973;
+    }
   </style>
 </head>
 <body>
@@ -327,13 +352,13 @@
     </div>
 
     <div class="stamp-row">
-      <span class="req-id">ID: EPIC-001</span>
-      <span class="stamp">Epic</span>
+      <span class="req-id">ID: FEAT-002</span>
+      <span class="stamp">Feature</span>
     </div>
 
     <div style="text-align:center;">
       <div class="title">
-        <span class="hl">DATE DESPRE COMPANII</span>
+        <span class="hl">SURSE GRATUITE DE VERIFICARE</span>
       </div>
     </div>
 
@@ -342,230 +367,246 @@
       <div class="section">
         <h2>Prezentare generală</h2>
         <p>
-          Datele despre companii stau la baza întregului ecosistem
-          <span class="hl">peviitor.ro</span>. Fiecare loc de muncă
-          publicat aparține unei companii, iar acuratețea informațiilor
-          despre acestea determină calitatea agregării.
+          Pentru a verifica datele despre o companie din România există
+          mai multe surse gratuite puse la dispoziție de instituții publice
+          și platforme private. Fiecare sursă oferă un set diferit de
+          informații, cu grade diferite de acuratețe și limitări proprii.
         </p>
         <p>
-          Acest epic definește modelul de date al companiilor, sursele
-          din care datele sunt colectate și menținute, precum și ciclul
-          de viață al unei companii în sistem.
+          Acest feature documentează toate sursele disponibile gratuit,
+          datele pe care le oferă, limitările fiecăreia și un ghid
+          simplu de decizie pentru a alege sursa potrivită în funcție
+          de nevoia specifică.
         </p>
       </div>
 
       <div class="section">
-        <h2>Modelul companiei</h2>
-        <p>Definiția câmpurilor care descriu o companie în cadrul sistemului:</p>
+        <h2>Catalogul surselor</h2>
 
+        <h3>ONRC — Oficiul Național al Registrului Comerțului</h3>
         <table>
           <thead>
             <tr>
-              <th>Câmp</th>
-              <th>Tip</th>
-              <th>Obligatoriu</th>
-              <th>Descriere</th>
+              <th>Aspect</th>
+              <th>Detalii</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><code>id</code></td>
-              <td>string</td>
-              <td>Da</td>
-              <td>CIF/CUI, exact 8 cifre, fără prefix RO</td>
+              <td><strong>URL</strong></td>
+              <td><code>onrc.ro</code></td>
             </tr>
             <tr>
-              <td><code>company</code></td>
-              <td>string</td>
-              <td>Da</td>
-              <td>Denumirea legală din Registrul Comerțului, uppercase, cu diacritice</td>
+              <td><strong>Date oferite</strong></td>
+              <td>Denumire, CUI, sediu, stare funcțională, dată înmatriculare</td>
             </tr>
             <tr>
-              <td><code>brand</code></td>
-              <td>string</td>
-              <td>Nu</td>
-              <td>Numele comercial sub care este cunoscută compania (ex: ORANGE, EPAM)</td>
+              <td><strong>Limitări</strong></td>
+              <td>Interfață greoaie, fără API public, căutare manuală</td>
             </tr>
             <tr>
-              <td><code>group</code></td>
-              <td>string</td>
-              <td>Nu</td>
-              <td>Grupul din care face parte compania (ex: Orange Group, EPAM Systems)</td>
-            </tr>
-            <tr>
-              <td><code>status</code></td>
-              <td>string</td>
-              <td>Nu</td>
-              <td><code>activ</code> / <code>suspendat</code> / <code>inactiv</code> / <code>radiat</code></td>
-            </tr>
-            <tr>
-              <td><code>location</code></td>
-              <td>string[]</td>
-              <td>Nu</td>
-              <td>Orașul/orașele unde compania are sedii, diacritice acceptate</td>
-            </tr>
-            <tr>
-              <td><code>website</code></td>
-              <td>string[]</td>
-              <td>Nu</td>
-              <td>URL-urile site-urilor oficiale</td>
-            </tr>
-            <tr>
-              <td><code>career</code></td>
-              <td>string[]</td>
-              <td>Nu</td>
-              <td>URL-urile paginilor de carieră</td>
-            </tr>
-            <tr>
-              <td><code>lastScraped</code></td>
-              <td>string</td>
-              <td>Nu</td>
-              <td>Data ultimei colectări, format ISO8601</td>
-            </tr>
-            <tr>
-              <td><code>scraperFile</code></td>
-              <td>string</td>
-              <td>Nu</td>
-              <td>Numele fișierului scraper care a adăugat compania</td>
+              <td><strong>Cost</strong></td>
+              <td>Gratuit</td>
             </tr>
           </tbody>
         </table>
 
-        <p style="margin-top:12px;"><strong>Exemplu:</strong> Holcim România</p>
+        <h3>ANAF — Agenția Națională de Administrare Fiscală</h3>
         <table>
           <thead>
             <tr>
-              <th>Câmp</th>
-              <th>Valoare</th>
+              <th>Aspect</th>
+              <th>Detalii</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><code>id</code></td>
-              <td><code>361324</code></td>
+              <td><strong>URL</strong></td>
+              <td><code>anaf.ro</code></td>
             </tr>
             <tr>
-              <td><code>company</code></td>
-              <td>HOLCIM ROMÂNIA S.A.</td>
+              <td><strong>Date oferite</strong></td>
+              <td>CUI, denumire, stare fiscală, dată înregistrare</td>
             </tr>
             <tr>
-              <td><code>brand</code></td>
-              <td>HOLCIM</td>
+              <td><strong>Limitări</strong></td>
+              <td>API disponibil dar cu rate limiting (1 req/sec), max 100 CUI-uri per request</td>
             </tr>
             <tr>
-              <td><code>group</code></td>
-              <td>Holcim Group</td>
+              <td><strong>Cost</strong></td>
+              <td>Gratuit</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Listafirme.ro</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Detalii</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>URL</strong></td>
+              <td><code>listafirme.ro</code></td>
             </tr>
             <tr>
-              <td><code>status</code></td>
-              <td><code>activ</code></td>
+              <td><strong>Date oferite</strong></td>
+              <td>Date de bază gratuite, rapoarte detaliate contra cost</td>
             </tr>
             <tr>
-              <td><code>location</code></td>
-              <td><code>["Arad", "Brașov", "București", "Cluj-Napoca", "Constanța", "Iași", "Timișoara"]</code></td>
+              <td><strong>Limitări</strong></td>
+              <td>Date complete doar contra cost, limitări la căutări</td>
             </tr>
             <tr>
-              <td><code>website</code></td>
-              <td><code>["https://www.holcim.ro"]</code></td>
+              <td><strong>Cost</strong></td>
+              <td>Parțial gratuit</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Termene.ro</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Detalii</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>URL</strong></td>
+              <td><code>termene.ro</code></td>
             </tr>
             <tr>
-              <td><code>career</code></td>
-              <td><code>["https://www.holcim.ro/cariere"]</code></td>
+              <td><strong>Date oferite</strong></td>
+              <td>Căutări limitate gratuite, date financiare detaliate</td>
             </tr>
             <tr>
-              <td><code>lastScraped</code></td>
-              <td><code>2026-06-26</code></td>
+              <td><strong>Limitări</strong></td>
+              <td>Număr limitat de căutări gratuite per lună</td>
             </tr>
             <tr>
-              <td><code>scraperFile</code></td>
-              <td><code>holcim.md</code></td>
+              <td><strong>Cost</strong></td>
+              <td>Parțial gratuit</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Targetare.ro</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Detalii</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>URL</strong></td>
+              <td><code>targetare.ro</code></td>
+            </tr>
+            <tr>
+              <td><strong>Date oferite</strong></td>
+              <td>Date despre companii, căutare gratuită</td>
+            </tr>
+            <tr>
+              <td><strong>Limitări</strong></td>
+              <td>Acoperire parțială, date de bază</td>
+            </tr>
+            <tr>
+              <td><strong>Cost</strong></td>
+              <td>Gratuit</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Demoanaf.ro</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Detalii</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>URL</strong></td>
+              <td><code>demoanaf.ro</code></td>
+            </tr>
+            <tr>
+              <td><strong>Date oferite</strong></td>
+              <td>Verificare stare fiscală, date ANAF</td>
+            </tr>
+            <tr>
+              <td><strong>Limitări</strong></td>
+              <td>Interfață simplă, fără export bulk</td>
+            </tr>
+            <tr>
+              <td><strong>Cost</strong></td>
+              <td>Gratuit</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Cuifirma.ro</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Detalii</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>URL</strong></td>
+              <td><code>cuifirma.ro</code></td>
+            </tr>
+            <tr>
+              <td><strong>Date oferite</strong></td>
+              <td>Căutare firmă după CUI sau denumire</td>
+            </tr>
+            <tr>
+              <td><strong>Limitări</strong></td>
+              <td>Date de bază, fără detalii financiare</td>
+            </tr>
+            <tr>
+              <td><strong>Cost</strong></td>
+              <td>Gratuit</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="section">
-        <h2>Surse de date</h2>
-        <p>Datele despre companii provin din următoarele surse:</p>
-
-        <h3>1. ANAF API</h3>
+        <h2>Când să folosești fiecare sursă</h2>
         <p>
-          API-ul pus la dispoziție de Agenția Națională de Administrare
-          Fiscală. Oferă denumirea oficială, starea de înregistrare și
-          adresa sediului social.
+          Alegerea sursei potrivite depinde de tipul de verificare
+          pe care dorești să îl efectuezi:
         </p>
         <ul>
-          <li><strong>Endpoint:</strong> <code>https://webservicesp.anaf.ro/api/PlatitorTvaRest/v9/tva</code></li>
-          <li><strong>Limită:</strong> 100 CUI-uri per request, maxim 1 request/secundă</li>
-        </ul>
-
-        <h3>2. ONRC</h3>
-        <p>
-          Registrul Comerțului pune la dispoziție seturi de date
-          deschise pe <code>data.gov.ro</code>. Acestea conțin toate
-          companiile înregistrate în România, în format CSV.
-        </p>
-
-        <h3>3. Scrapere directe</h3>
-        <p>
-          Voluntarii adaugă companii manual prin scraper-e. Denumirea
-          companiei trebuie să corespundă cu cea din Registrul
-          Comerțului.
-        </p>
-
-        <h3>4. AI agentic (Web Search)</h3>
-        <p>
-          Un agent AI cu funcție de căutare web identifică automat
-          datele lipsă ale companiei: website oficial, pagină de
-          carieră, brand și grupul din care face parte.
-        </p>
-        <ul>
-          <li><strong>Date descoperite:</strong> website, career, brand, group</li>
-          <li><strong>Metodă:</strong> interogare web search cu numele companiei și locația</li>
-          <li><strong>Avantaj:</strong> elimină munca manuală de documentare pentru fiecare companie</li>
+          <li><strong>Verificare rapidă a existenței</strong> — Cuifirma.ro sau Targetare.ro (căutare simplă, instantanee)</li>
+          <li><strong>Stare fiscală</strong> — Demoanaf.ro sau ANAF (surse oficiale, date de încredere)</li>
+          <li><strong>Date oficiale complete</strong> — ONRC (sursa primară, cea mai actualizată)</li>
+          <li><strong>Validare în masă</strong> — ANAF API (singura sursă cu API programatic, max 100 CUI-uri/request)</li>
+          <li><strong>Date financiare</strong> — Termene.ro (rapoarte detaliate contra cost)</li>
+          <li><strong>Date de bază gratuite</strong> — Listafirme.ro (informații generale fără cost)</li>
         </ul>
       </div>
 
       <div class="section">
-        <h2>Ciclul de viață</h2>
-        <p>Ciclul de viață al unei companii în sistem:</p>
+        <h2>Recomandări pentru EPIC</h2>
+        <p>
+          Pentru <span class="hl">peviitor.ro</span>, strategia
+          recomandată este:
+        </p>
         <ol>
-          <li>
-            <strong>Adăugare</strong> — Un voluntar creează un scraper
-            care menționează o companie. Compania este adăugată în
-            SOLR cu datele minime (<code>id</code>, <code>company</code>,
-            <code>status=activ</code>).
-          </li>
-          <li>
-            <strong>Îmbogățire</strong> — Un proces automat
-            completează datele lipsă: status oficial, locație, website,
-            pagină de carieră, brand, grup.
-          </li>
-          <li>
-            <strong>Verificare periodică</strong> — Companiile active
-            sunt re-verificate împotriva surselor oficiale pentru a
-            detecta companiile radiate sau inactive.
-          </li>
-          <li>
-            <strong>Arhivare</strong> — Companiile cu status
-            <code>inactiv</code> sau <code>radiat</code> nu mai au
-            job-uri active asociate.
-          </li>
+          <li><strong>Primar</strong> — ANAF API pentru validare automată în masă (FEAT-003: ANAF Sync)</li>
+          <li><strong>Secundar</strong> — ONRC prin data.gov.ro pentru importul inițial de companii (FEAT-004: ONRC Import)</li>
+          <li><strong>Tertiar</strong> — Cuifirma.ro / Demoanaf.ro pentru verificări punctuale manuale</li>
         </ol>
-      </div>
-
-      <div class="section">
-        <h2>Feature-uri derivate</h2>
-        <p>Feature-urile derivate din acest epic, detaliate separat:</p>
-        <ul>
-          <li><strong><a href="../../features/structura-companii/">FEAT-001 — Structura companiei</a></strong> — modelul de date, identitate legală și comercială, scraper asociat</li>
-          <li><strong><a href="../../features/surse-gratuite/">FEAT-002 — Surse gratuite de verificare</a></strong> — cele 7 surse gratuite pentru verificarea datelor despre companii</li>
-          <li><strong><a href="../../features/anaf-sync/">FEAT-003 — ANAF Sync</a></strong> — sincronizare automată cu ANAF</li>
-          <li><strong><a href="../../features/onrc-import/">FEAT-004 — ONRC Import</a></strong> — import date din Registrul Comerțului</li>
-          <li><strong><a href="../../features/company-validation/">FEAT-005 — Company Validation</a></strong> — reguli de validare a datelor de companie</li>
-          <li><strong><a href="../../features/ai-enrichment/">FEAT-006 — AI Enrichment</a></strong> — identificare automată brand, grup, website, pagină de carieră</li>
-          <li><strong><a href="../../features/automation-scheduling/">FEAT-007 — Automation & Scheduling</a></strong> — GitHub Actions pentru actualizări periodice</li>
-        </ul>
       </div>
 
       <div class="footnotes">
@@ -573,50 +614,25 @@
         <table>
           <tbody>
             <tr>
-              <td><a href="../date-despre-companii/">EPIC-001</a></td>
+              <td><a href="../../epics/date-despre-companii/">EPIC-001</a></td>
               <td>Date despre companii</td>
-              <td>Sursa datelor despre angajatori</td>
+              <td>Sursa principală a acestui feature</td>
             </tr>
             <tr>
-              <td><a href="../locuri-de-munca/">EPIC-002</a></td>
-              <td>Locuri de muncă</td>
-              <td>Modelul datelor indexate</td>
-            </tr>
-            <tr>
-              <td><a href="../protectia-datelor/">EPIC-003</a></td>
-              <td>Protecția datelor</td>
-              <td>Integritatea și securitatea informației</td>
-            </tr>
-            <tr>
-              <td><a href="../scrapere-automatizare/">EPIC-004</a></td>
-              <td>Scrapere & Automatizare</td>
-              <td>Alimentarea motorului cu date proaspete</td>
-            </tr>
-            <tr>
-              <td><a href="../validare-testare/">EPIC-005</a></td>
+              <td><a href="../../epics/validare-testare/">EPIC-005</a></td>
               <td>Validare & Testare</td>
-              <td>Calitatea datelor indexate</td>
-            </tr>
-            <tr>
-              <td><a href="../infrastructura-solr/">EPIC-006</a></td>
-              <td>Infrastructură SOLR</td>
-              <td>Motorul de indexare și căutare full-text</td>
-            </tr>
-            <tr>
-              <td><a href="../api-public/">EPIC-007</a></td>
-              <td>API Public</td>
-              <td>Interfața programatică pentru terți</td>
+              <td>Utilizarea surselor pentru validarea datelor</td>
             </tr>
           </tbody>
         </table>
 
-        <h3>Linked Features</h3>
+        <h3>Feature-uri conexe</h3>
         <table>
           <tbody>
             <tr>
-              <td><a href="../../features/structura-companii/">FEAT-001</a></td>
+              <td><a href="../structura-companii/">FEAT-001</a></td>
               <td>Structura companiei</td>
-              <td>Modelul de date al companiei, identitate legală și comercială</td>
+              <td>Modelul de date pe care îl completează sursele</td>
             </tr>
           </tbody>
         </table>
