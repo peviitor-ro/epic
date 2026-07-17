@@ -285,6 +285,53 @@
     }
 
     .footer a:hover { color: #2f7973; }
+
+    .footnotes {
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px solid #e8dccc;
+      font-size: 0.75rem;
+      color: #8b7d6b;
+      line-height: 1.6;
+    }
+
+    .footnotes h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #5a4a3a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      margin-top: 18px;
+    }
+
+    .footnotes h3:first-child {
+      margin-top: 0;
+    }
+
+    .footnotes table {
+      font-size: 0.75rem;
+      margin: 8px 0;
+    }
+
+    .footnotes table th,
+    .footnotes table td {
+      padding: 5px 10px;
+      border-color: #e8dccc;
+    }
+
+    .footnotes table th {
+      font-size: 0.7rem;
+    }
+
+    .footnotes a {
+      color: #5a4a3a;
+      text-decoration: none;
+    }
+
+    .footnotes a:hover {
+      color: #2f7973;
+    }
   </style>
 </head>
 <body>
@@ -730,42 +777,58 @@
         </ul>
       </div>
 
-      <div class="section">
-        <h2>Relația cu epicele</h2>
+      <div class="footnotes">
+        <h3>Legături cu celelalte epice</h3>
         <table>
-          <thead>
-            <tr>
-              <th>Epic</th>
-              <th>Relație</th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
-              <td><a href="../../epics/date-despre-companii/">EPIC-001 — Date despre companii</a></td>
-              <td>Modelul de date al companiei, sursele de date, ciclul de viață</td>
+              <td><a href="../../epics/date-despre-companii/">EPIC-001</a></td>
+              <td>Date despre companii</td>
+              <td>Sursa datelor despre angajatori</td>
             </tr>
             <tr>
-              <td><a href="../../epics/scrapere-automatizare/">EPIC-004 — Scrapere & Automatizare</a></td>
-              <td>Arhitectura scraper-elor, automatizarea prin GitHub Actions</td>
+              <td><a href="../../epics/locuri-de-munca/">EPIC-002</a></td>
+              <td>Locuri de muncă</td>
+              <td>Modelul datelor indexate</td>
             </tr>
             <tr>
-              <td><a href="../../epics/api-public/">EPIC-007 — API Public</a></td>
-              <td>Endpoint-urile prin care scraper-ele trimit job-urile</td>
+              <td><a href="../../epics/protectia-datelor/">EPIC-003</a></td>
+              <td>Protecția datelor</td>
+              <td>Integritatea și securitatea informației</td>
+            </tr>
+            <tr>
+              <td><a href="../../epics/scrapere-automatizare/">EPIC-004</a></td>
+              <td>Scrapere & Automatizare</td>
+              <td>Alimentarea motorului cu date proaspete</td>
+            </tr>
+            <tr>
+              <td><a href="../../epics/validare-testare/">EPIC-005</a></td>
+              <td>Validare & Testare</td>
+              <td>Calitatea datelor indexate</td>
+            </tr>
+            <tr>
+              <td><a href="../../epics/infrastructura-solr/">EPIC-006</a></td>
+              <td>Infrastructură SOLR</td>
+              <td>Motorul de indexare și căutare full-text</td>
+            </tr>
+            <tr>
+              <td><a href="../../epics/api-public/">EPIC-007</a></td>
+              <td>API Public</td>
+              <td>Interfața programatică pentru terți</td>
             </tr>
           </tbody>
         </table>
-      </div>
 
-      <div class="section">
-        <h2>Feature-uri derivate</h2>
-        <ul>
-          <li><strong>Company Identity Resolution</strong> — identificarea companiei din CIF, nume și locație</li>
-          <li><strong>ANAF Enrichment Pipeline</strong> — completare date companie din surse oficiale</li>
-          <li><strong>Brand Discovery</strong> — identificare automată a brandului comercial</li>
-          <li><strong>Group Discovery</strong> — identificare grupului din care face parte compania</li>
-          <li><strong>Scraper Registry</strong> — catalogul scraperelor asociate fiecărei companii</li>
-          <li><strong>Job Collection Pipeline</strong> — flow-ul complet de colectare a job-urilor prin scrapere</li>
-        </ul>
+        <h3>Linked Features</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td>FEAT-001</td>
+              <td>Structura companiei</td>
+              <td>Acest document</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
