@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature: VERIFICARE FĂRĂ DATE PERSONALE – Requirements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Great+Vibes&family=Gelasio:wght@700&family=Roboto:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Jost', 'Segoe UI', Arial, sans-serif;
+      font-weight: 300;
+      font-size: 1.25rem;
+      background: #f0ebe3;
+      color: #1a1a1a;
+      line-height: 1.8;
+      padding: 40px 20px;
+    }
+    .letter-wrapper { max-width: 780px; margin: 0 auto; }
+    .letter {
+      background: #fffcf7;
+      padding: 70px 75px;
+      box-shadow: 0 2px 40px rgba(0,0,0,0.08);
+      border-radius: 2px;
+    }
+    @media (max-width: 600px) { .letter { padding: 35px 30px; } }
+    .stamp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stamp {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border: 2px solid #2f7973;
+      color: #2f7973;
+      padding: 2px 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: 'Jost', 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      border-radius: 2px;
+    }
+    .req-id {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #8b7d6b;
+      font-family: 'Fira Code', 'Segoe UI', monospace;
+      letter-spacing: 0.5px;
+    }
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e8dccc;
+      padding-bottom: 20px;
+      margin-bottom: 0;
+    }
+    .top-row-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .top-row-left .aoc-logo { height: 60px; width: auto; }
+    .top-row-left .brand-text .brand-first {
+      display: block;
+      font-family: 'Gelasio', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2f7973;
+      letter-spacing: 3px;
+      line-height: 1.2;
+    }
+    .top-row-left .brand-text .brand-second {
+      display: block;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1d2b5d;
+      letter-spacing: 2px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .top-logo { height: 28px; width: auto; }
+    .title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .title .hl { color: #2f7973; }
+    .body-text p { margin-bottom: 20px; text-align: justify; }
+    .body-text .hl {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #1d2b5d;
+    }
+    .section { margin-bottom: 35px; }
+    .section h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #e8dccc;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #5a4a3a;
+      margin-bottom: 8px;
+      margin-top: 18px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 1rem; }
+    table th, table td { border: 1px solid #e0d6c8; padding: 10px 14px; text-align: left; vertical-align: top; }
+    table th { background: #f5f0e8; font-weight: 600; color: #2c3e50; font-size: 0.95rem; }
+    table td { font-weight: 300; }
+    code {
+      font-family: 'Segoe UI', monospace;
+      font-size: 0.9rem;
+      background: #f5f0e8;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    ul, ol { margin: 10px 0 10px 25px; }
+    ul li, ol li { margin-bottom: 6px; }
+    blockquote {
+      margin: 20px 0;
+      padding: 20px 25px;
+      background: #f5f0e8;
+      border-left: 4px solid #2f7973;
+      font-style: italic;
+      color: #3d3d3d;
+    }
+    blockquote strong { color: #2f7973; }
+    .sig-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      padding-bottom: 20px;
+    }
+    .sig-left { display: flex; align-items: center; gap: 18px; }
+    .sig-photo {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e8dccc;
+      flex-shrink: 0;
+    }
+    .sig-text { font-family: 'Segoe UI', Arial, sans-serif; }
+    .sig-text .sig-name { font-size: 1.1rem; font-weight: 700; color: #2c3e50; }
+    .sig-text .sig-role { font-size: 0.9rem; color: #8b7d6b; }
+    .sig-text .sig-role span { font-weight: 600; color: #5a4a3a; }
+    .sig-logo { height: 28px; width: auto; }
+    .footer {
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px solid #e8dccc;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 0.7rem;
+      color: #a89e90;
+      text-align: center;
+      line-height: 1.6;
+      letter-spacing: 0.3px;
+    }
+    .footer a { color: #a89e90; text-decoration: none; }
+    .footer a:hover { color: #2f7973; }
+    .footnotes {
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px solid #e8dccc;
+      font-size: 0.75rem;
+      color: #8b7d6b;
+      line-height: 1.6;
+    }
+    .footnotes h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #5a4a3a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      margin-top: 18px;
+    }
+    .footnotes h3:first-child { margin-top: 0; }
+    .footnotes table { font-size: 0.75rem; margin: 8px 0; }
+    .footnotes table th, .footnotes table td { padding: 5px 10px; border-color: #e8dccc; }
+    .footnotes table th { font-size: 0.7rem; }
+    .footnotes a { color: #5a4a3a; text-decoration: none; }
+    .footnotes a:hover { color: #2f7973; }
+  </style>
+</head>
+<body>
+
+<div class="letter-wrapper">
+
+  <div class="letter">
+
+    <div class="top-row">
+      <div class="top-row-left">
+        <img class="aoc-logo" src="https://oportunitatisicariere.ro/assets/Header/logo.png" alt="Asociația Oportunități și Cariere">
+        <div class="brand-text">
+          <span class="brand-first">ASOCIAȚIA</span>
+          <span class="brand-second">OPORTUNITĂȚI ȘI CARIERE</span>
+        </div>
+      </div>
+      <img class="top-logo" src="https://peviitor.ro/assets/logo-DV2JQkir.svg" alt="peviitor.ro">
+    </div>
+
+    <div class="stamp-row">
+      <span class="req-id">ID: FEAT-038</span>
+      <span class="stamp">Feature</span>
+    </div>
+
+    <div style="text-align:center;">
+      <div class="title">
+        <span class="hl">VERIFICARE FĂRĂ DATE PERSONALE</span>
+      </div>
+    </div>
+
+    <div class="body-text">
+
+      <div class="section">
+        <h2>Prezentare generală</h2>
+        <p>
+          <span class="hl">Verificarea fără date personale</span> este o suită
+          de teste care confirmă faptul că platforma
+          <span class="hl">peviitor.ro</span> nu colectează, stochează
+          sau procesează date personale ale utilizatorilor. Scopul
+          este de a garanta confidențialitatea și anonimatul
+          complet al persoanelor care utilizează platforma.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Cerințe de verificare</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Verificare</th>
+              <th>Descriere</th>
+              <th>Rezultat așteptat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Bază de date</strong></td>
+              <td>Testare că nu există date personale în baza de date</td>
+              <td>Fără date personale</td>
+            </tr>
+            <tr>
+              <td><strong>Tabele utilizatori</strong></td>
+              <td>Verificare că nu există tabele de utilizatori</td>
+              <td>Fără tabele de utilizatori</td>
+            </tr>
+            <tr>
+              <td><strong>Endpoint-uri login/registro</strong></td>
+              <td>Verificare că nu există endpoint-uri de login sau înregistrare</td>
+              <td>Fără endpoint-uri de autentificare</td>
+            </tr>
+            <tr>
+              <td><strong>Cookies de sesiune</strong></td>
+              <td>Verificare că nu există cookies de sesiune</td>
+              <td>Fără cookies de sesiune</td>
+            </tr>
+            <tr>
+              <td><strong>Trackere externe</strong></td>
+              <td>Verificare că nu există Google Analytics sau Facebook Pixel</td>
+              <td>Fără trackere externe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2>Metodologie de testare</h2>
+        <ol>
+          <li><strong>Analiza bazei de date</strong> — inspectarea structurii tabelelor pentru a confirma absența datelor personale</li>
+          <li><strong>Scanarea codului sursă</strong> — căutarea referințelor la colectarea de date personale</li>
+          <li><strong>Testarea rețelei</strong> — monitorizarea traficului pentru a identifica cereri către servicii de tracking</li>
+          <li><strong>Verificarea cookies</strong> — auditul cookies-urilor setate de platformă</li>
+        </ol>
+      </div>
+
+      <div class="footnotes">
+        <h3>Legături cu celelalte epice</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td><a href="../../epics/protectia-datelor/">EPIC-003</a></td>
+              <td>Protecția datelor</td>
+              <td>Confidențialitatea și anonimatul utilizatorilor</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Legături cu celelalte funcționalități</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td><a href="../no-ads/">FEAT-040</a></td>
+              <td>Verificare fără reclame</td>
+              <td>Absența trackerelor externe</td>
+            </tr>
+            <tr>
+              <td><a href="../free-forever/">FEAT-039</a></td>
+              <td>Verificare gratuitate</td>
+              <td>Nu se vinde datele utilizatorilor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="sig-row">
+      <div class="sig-left">
+        <img class="sig-photo" src="https://raw.githubusercontent.com/sebiboga/aboutme/main/poza/sebi_03.jpeg" alt="Boga Sebastian Nicolae">
+        <div class="sig-text">
+          <div class="sig-name">Boga Sebastian Nicolae</div>
+          <div class="sig-role">Product Owner, <span>peviitor.ro</span></div>
+        </div>
+      </div>
+      <img class="sig-logo" src="https://peviitor.ro/assets/logo-DV2JQkir.svg" alt="peviitor.ro">
+    </div>
+
+    <div class="footer">
+      <a href="../../index.html">&larr; Toate requirement-urile</a> &nbsp;·&nbsp;
+      <a href="https://oportunitatisicariere.ro">oportunitatisicariere.ro</a> &nbsp;·&nbsp;
+      <a href="https://peviitor.ro">peviitor.ro</a> &nbsp;·&nbsp;
+      <a href="https://discord.gg/KPMkdUfQNu">Discord</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
